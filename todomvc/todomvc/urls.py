@@ -16,7 +16,10 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.views.generic import TemplateView
+from todo.views import TodosView, TodosDetailView
 
 urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name="index.html")),
+    url(r'^api/todos/$', TodosView.as_view(), name="todos_view"),
+    url(r'^api/todos/(?P<pk>\d+)$', TodosDetailView.as_view(), name="todos_detail_view")
 ]
